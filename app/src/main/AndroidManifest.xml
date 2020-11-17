@@ -16,13 +16,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AppetizersActivity"></activity>
+        <activity android:name=".AppetizersActivity" />
+        <activity android:name="NewRecipeActivity" />
 
         <provider
             android:authorities="com.example.recipes.recipeprovider"
             android:name=".RecipeProvider"
             android:enabled="true"
-            android:exported="true"></provider>
+            android:exported="true" />
     </application>
 
 </manifest>

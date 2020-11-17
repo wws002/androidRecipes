@@ -6,27 +6,23 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class AppetizersActivity extends AppCompatActivity implements View.OnClickListener {
+public class NewRecipeActivity extends AppCompatActivity implements View.OnClickListener {
     @Override
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_appetizers);
+        setContentView(R.layout.activity_newrecipe);
         initialize();
     }
 
     void initialize(){
         findViewById(R.id.homeBtn).setOnClickListener(this);
-        findViewById(R.id.newRecipeBtn).setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch(v.getId()){
             case R.id.homeBtn:
-                returnHome();
-                break;
-            case R.id.newRecipeBtn:
-                newRecipe();
+                saveRecipe();
                 break;
             default:
                 //this shouldn't happen
@@ -34,13 +30,8 @@ public class AppetizersActivity extends AppCompatActivity implements View.OnClic
         }
     }
 
-    void returnHome(){
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-    }
-
-    void newRecipe(){
-        Intent intent = new Intent(this, NewRecipeActivity.class);
+    void saveRecipe(){
+        Intent intent = new Intent(this, AppetizersActivity.class);
         startActivity(intent);
     }
 }
