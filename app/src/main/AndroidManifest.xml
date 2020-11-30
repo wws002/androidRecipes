@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".AppetizersActivity" />
-        <activity android:name="NewRecipeActivity" />
+        <activity android:name=".NewRecipeActivity" />
 
         <provider
             android:authorities="com.example.recipes.recipeprovider"

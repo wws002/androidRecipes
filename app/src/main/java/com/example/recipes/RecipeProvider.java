@@ -32,9 +32,9 @@ public class RecipeProvider extends ContentProvider {
     private static final String SQL_CREATE_MAIN = "CREATE TABLE " +
             TABLE_NAME + " " +
             "(" +
-            RECIPES_TABLE_COL_ID + "INTEGER PRIMARY KEY, " +
-            RECIPES_TABLE_COL_TITLE + "TEXT," +
-            RECIPES_TABLE_COL_CONTENT + "TEXT)";
+            RECIPES_TABLE_COL_ID + " INTEGER PRIMARY KEY, " +
+            RECIPES_TABLE_COL_TITLE + " TEXT," +
+            RECIPES_TABLE_COL_CONTENT + " TEXT)";
 
     private static final UriMatcher sUriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
     private MainDatabaseHelper mOpenHelper;
@@ -136,7 +136,7 @@ public class RecipeProvider extends ContentProvider {
          * Do not do database creation and upgrade here.
          */
         MainDatabaseHelper(Context context) {
-            super(context, DBNAME, null, 1);
+            super(context, DBNAME, null, 6);
         }
 
         /*
@@ -144,7 +144,6 @@ public class RecipeProvider extends ContentProvider {
          * repository and SQLite reports that it doesn't exist.
          */
         public void onCreate(SQLiteDatabase db) {
-
             // Creates the main table
             db.execSQL(SQL_CREATE_MAIN);
         }
@@ -152,8 +151,6 @@ public class RecipeProvider extends ContentProvider {
         public void onUpgrade(SQLiteDatabase db, int int1, int int2){
             db.execSQL("DROP TABLE IF EXISTS Recipes");
             onCreate(db);
-
         }
     }
-
 }

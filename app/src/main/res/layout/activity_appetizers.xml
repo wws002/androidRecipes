@@ -16,6 +16,7 @@
         app:layout_constraintLeft_toLeftOf="parent" />
 
     <ListView
+        android:id="@+id/appsList"
         android:layout_width="wrap_content"
         android:layout_height="575dp"
         app:layout_constraintStart_toStartOf="parent"
