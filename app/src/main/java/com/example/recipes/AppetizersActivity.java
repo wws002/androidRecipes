@@ -20,6 +20,8 @@ public class AppetizersActivity extends AppCompatActivity implements View.OnClic
     void initialize(){
         findViewById(R.id.homeBtn).setOnClickListener(this);
         findViewById(R.id.newRecipeBtn).setOnClickListener(this);
+        ListView listView = findViewById(R.id.appsList);
+        listView.setOnItemClickListener((parent, view, position, id) -> editRecipe(id));
 
         String[] projection = {
                 RecipeProvider.RECIPES_TABLE_COL_ID,
@@ -54,6 +56,12 @@ public class AppetizersActivity extends AppCompatActivity implements View.OnClic
 
     void newRecipe(){
         Intent intent = new Intent(this, NewRecipeActivity.class);
+        startActivity(intent);
+    }
+
+    void editRecipe(long id){
+        Intent intent = new Intent(this, EditRecipeActivity.class);
+        intent.putExtra("listItemID", id);
         startActivity(intent);
     }
 }
