@@ -19,6 +19,7 @@
         <activity android:name=".AppetizersActivity" />
         <activity android:name=".NewRecipeActivity" />
         <activity android:name=".EditRecipeActivity"/>
+        <activity android:name=".BreakfastActivity"/>
 
         <provider
             android:authorities="com.example.recipes.recipeprovider"
