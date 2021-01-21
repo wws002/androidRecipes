@@ -55,13 +55,22 @@ public class NewRecipeActivity extends AppCompatActivity implements View.OnClick
         getContentResolver().insert(RecipeProvider.CONTENT_URI, myCV);
 
         //return to previous page
-        if(type.equals("Appetizer")){
-            Intent intent = new Intent(this, AppetizersActivity.class);
-            startActivity(intent);
-        }
-        else if(type.equals("Breakfast")){
-            Intent intent = new Intent(this, BreakfastActivity.class);
-            startActivity(intent);
+        switch (type) {
+            case "Appetizer": {
+                Intent intent = new Intent(this, AppetizersActivity.class);
+                startActivity(intent);
+                break;
+            }
+            case "Breakfast": {
+                Intent intent = new Intent(this, BreakfastActivity.class);
+                startActivity(intent);
+                break;
+            }
+            case "Lunch": {
+                Intent intent = new Intent(this, LunchActivity.class);
+                startActivity(intent);
+                break;
+            }
         }
     }
 
@@ -70,13 +79,22 @@ public class NewRecipeActivity extends AppCompatActivity implements View.OnClick
         Intent oldIntent = getIntent();
         String type = oldIntent.getStringExtra("listItemType");
 
-        if(type.equals("Appetizer")) {
-            Intent intent = new Intent(this, AppetizersActivity.class);
-            startActivity(intent);
-        }
-        else if(type.equals("Breakfast")){
-            Intent intent = new Intent(this, BreakfastActivity.class);
-            startActivity(intent);
+        switch (type) {
+            case "Appetizer": {
+                Intent intent = new Intent(this, AppetizersActivity.class);
+                startActivity(intent);
+                break;
+            }
+            case "Breakfast": {
+                Intent intent = new Intent(this, BreakfastActivity.class);
+                startActivity(intent);
+                break;
+            }
+            case "Lunch": {
+                Intent intent = new Intent(this, LunchActivity.class);
+                startActivity(intent);
+                break;
+            }
         }
     }
 }

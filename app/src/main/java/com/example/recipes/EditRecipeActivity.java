@@ -57,13 +57,22 @@ public class EditRecipeActivity extends AppCompatActivity {
         }
 
         //start previous activity
-        if(type.equals("Appetizer")) {
-            Intent intent = new Intent(this, AppetizersActivity.class);
-            startActivity(intent);
-        }
-        else if(type.equals("Breakfast")){
-            Intent intent = new Intent(this, BreakfastActivity.class);
-            startActivity(intent);
+        switch (type) {
+            case "Appetizer": {
+                Intent intent = new Intent(this, AppetizersActivity.class);
+                startActivity(intent);
+                break;
+            }
+            case "Breakfast": {
+                Intent intent = new Intent(this, BreakfastActivity.class);
+                startActivity(intent);
+                break;
+            }
+            case "Lunch": {
+                Intent intent = new Intent(this, LunchActivity.class);
+                startActivity(intent);
+                break;
+            }
         }
     }
 
@@ -90,13 +99,22 @@ public class EditRecipeActivity extends AppCompatActivity {
         getContentResolver().update(RecipeProvider.CONTENT_URI, myCV, "_id = " + id.toString(), null);
 
         //start previous activity
-        if(type.equals("Appetizer")) {
-            Intent intent = new Intent(this, AppetizersActivity.class);
-            startActivity(intent);
-        }
-        else if(type.equals("Breakfast")){
-            Intent intent = new Intent(this, BreakfastActivity.class);
-            startActivity(intent);
+        switch (type) {
+            case "Appetizer": {
+                Intent intent = new Intent(this, AppetizersActivity.class);
+                startActivity(intent);
+                break;
+            }
+            case "Breakfast": {
+                Intent intent = new Intent(this, BreakfastActivity.class);
+                startActivity(intent);
+                break;
+            }
+            case "Lunch": {
+                Intent intent = new Intent(this, LunchActivity.class);
+                startActivity(intent);
+                break;
+            }
         }
     }
 }

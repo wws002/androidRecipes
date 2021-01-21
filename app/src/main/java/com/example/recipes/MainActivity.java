@@ -18,6 +18,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     void initialize(){
         findViewById(R.id.apps).setOnClickListener(this);
         findViewById(R.id.bfast).setOnClickListener(this);
+        findViewById(R.id.lnch).setOnClickListener(this);
+        findViewById(R.id.dnnr).setOnClickListener(this);
+        findViewById(R.id.dssrts).setOnClickListener(this);
     }
 
     @Override
@@ -28,6 +31,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.bfast:
                 openBreakfast();
+                break;
+            case R.id.lnch:
+                openLunch();
                 break;
             default:
                 //this shouldn't happen
@@ -42,6 +48,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     void openBreakfast(){
         Intent intent = new Intent(this, BreakfastActivity.class);
+        startActivity(intent);
+    }
+
+    void openLunch(){
+        Intent intent = new Intent(this, LunchActivity.class);
         startActivity(intent);
     }
 }
