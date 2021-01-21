@@ -37,6 +37,10 @@ public class NewRecipeActivity extends AppCompatActivity implements View.OnClick
     }
 
     void saveRecipe(){
+        //get recipe type
+        Intent oldIntent = getIntent();
+        String type = oldIntent.getStringExtra("listItemType");
+
         //get user input
         EditText recipeName = findViewById(R.id.recipeName);
         String name = recipeName.getText().toString();
@@ -45,17 +49,34 @@ public class NewRecipeActivity extends AppCompatActivity implements View.OnClick
 
         //add to database
         ContentValues myCV = new ContentValues();
+        myCV.put(RecipeProvider.RECIPES_TABLE_COL_TYPE, type);
         myCV.put(RecipeProvider.RECIPES_TABLE_COL_TITLE, name);
         myCV.put(RecipeProvider.RECIPES_TABLE_COL_CONTENT, recipe);
         getContentResolver().insert(RecipeProvider.CONTENT_URI, myCV);
 
         //return to previous page
-        Intent intent = new Intent(this, AppetizersActivity.class);
-        startActivity(intent);
+        if(type.equals("Appetizer")){
+            Intent intent = new Intent(this, AppetizersActivity.class);
+            startActivity(intent);
+        }
+        else if(type.equals("Breakfast")){
+            Intent intent = new Intent(this, BreakfastActivity.class);
+            startActivity(intent);
+        }
     }
 
     void deleteRecipe(){
-        Intent intent = new Intent(this, AppetizersActivity.class);
-        startActivity(intent);
+        //just return to the appetizers class
+        Intent oldIntent = getIntent();
+        String type = oldIntent.getStringExtra("listItemType");
+
+        if(type.equals("Appetizer")) {
+            Intent intent = new Intent(this, AppetizersActivity.class);
+            startActivity(intent);
+        }
+        else if(type.equals("Breakfast")){
+            Intent intent = new Intent(this, BreakfastActivity.class);
+            startActivity(intent);
+        }
     }
 }

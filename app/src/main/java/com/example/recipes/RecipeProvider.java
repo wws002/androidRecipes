@@ -26,6 +26,7 @@ public class RecipeProvider extends ContentProvider {
             Uri.parse("content://" + AUTHORITY + "/" + TABLE_NAME);
 
     public static final String RECIPES_TABLE_COL_ID = "_id";
+    public static final String RECIPES_TABLE_COL_TYPE = "TYPE";
     public static final String RECIPES_TABLE_COL_TITLE = "TITLE";
     public static final String RECIPES_TABLE_COL_CONTENT = "CONTENT";
 
@@ -33,6 +34,7 @@ public class RecipeProvider extends ContentProvider {
             TABLE_NAME + " " +
             "(" +
             RECIPES_TABLE_COL_ID + " INTEGER PRIMARY KEY, " +
+            RECIPES_TABLE_COL_TYPE + " TEXT," +
             RECIPES_TABLE_COL_TITLE + " TEXT," +
             RECIPES_TABLE_COL_CONTENT + " TEXT)";
 
@@ -136,7 +138,7 @@ public class RecipeProvider extends ContentProvider {
          * Do not do database creation and upgrade here.
          */
         MainDatabaseHelper(Context context) {
-            super(context, DBNAME, null, 6);
+            super(context, DBNAME, null, 7);
         }
 
         /*

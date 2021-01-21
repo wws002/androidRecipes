@@ -19,9 +19,11 @@ public class EditRecipeActivity extends AppCompatActivity {
 
         Intent oldIntent = getIntent();
         Long id = oldIntent.getLongExtra("listItemID", 0);
+        String type = oldIntent.getStringExtra("listItemType");
 
         String[] projection = {
                 RecipeProvider.RECIPES_TABLE_COL_ID,
+                RecipeProvider.RECIPES_TABLE_COL_TYPE,
                 RecipeProvider.RECIPES_TABLE_COL_TITLE,
                 RecipeProvider.RECIPES_TABLE_COL_CONTENT};
 
@@ -41,22 +43,37 @@ public class EditRecipeActivity extends AppCompatActivity {
     }
 
     public void deleteEditedNote(View v){
+        //get recipe ID
         Intent oldIntent = getIntent();
         Long id = oldIntent.getLongExtra("listItemID", 0);
 
+        //get recipe type
+        String type = oldIntent.getStringExtra("listItemType");
+
+        //delete the note
         int didWork = getContentResolver().delete(Uri.parse(RecipeProvider.CONTENT_URI + "/" + id), null, null);
         if(didWork == 1){
             Toast.makeText(getApplicationContext(), "Deleted Note", Toast.LENGTH_SHORT).show();
         }
 
-        Intent intent = new Intent(this, AppetizersActivity.class);
-        startActivity(intent);
+        //start previous activity
+        if(type.equals("Appetizer")) {
+            Intent intent = new Intent(this, AppetizersActivity.class);
+            startActivity(intent);
+        }
+        else if(type.equals("Breakfast")){
+            Intent intent = new Intent(this, BreakfastActivity.class);
+            startActivity(intent);
+        }
     }
 
     public void saveEditedNote(View v){
-        //get note ID
+        //get recipe ID
         Intent oldIntent = getIntent();
         Long id = oldIntent.getLongExtra("listItemID", 0);
+
+        //get recipe type
+        String type = oldIntent.getStringExtra("listItemType");
 
         //get user input
         EditText recipeTitle = findViewById(R.id.editRecipeTitle);
@@ -72,9 +89,14 @@ public class EditRecipeActivity extends AppCompatActivity {
         //update the database
         getContentResolver().update(RecipeProvider.CONTENT_URI, myCV, "_id = " + id.toString(), null);
 
-        //start appetizers activity
-        Intent intent = new Intent(this, AppetizersActivity.class);
-        startActivity(intent);
+        //start previous activity
+        if(type.equals("Appetizer")) {
+            Intent intent = new Intent(this, AppetizersActivity.class);
+            startActivity(intent);
+        }
+        else if(type.equals("Breakfast")){
+            Intent intent = new Intent(this, BreakfastActivity.class);
+            startActivity(intent);
+        }
     }
 }
-
